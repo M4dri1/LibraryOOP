@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>PedBook - Autores</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+</head>
+
+<body>
+    <header>
+        <h1>Autores</h1>
+    </header>
+
+    <nav>
+        <a href="books.html">Livros</a>
+        <a href="authors.html" class="active">Autores</a>
+    </nav>
+
+    <main>
+        <section class="form-section">
+            <h2>Adicionar Autor</h2>
+            <form id="author-form">
+                <label>Nome:</label>
+                <input type="text" name="name_author" required />
+                <button type="submit">Adicionar</button>
+            </form>
+        </section>
+
+        <section class="author-list">
+            <h2>Autores</h2>
+            <table id="authors" border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <div class="pagination" id="pagination"></div>
+        </section>
+    </main>
+
+    <script src="assets/config.js"></script>
+    <script src="assets/ui.js"></script>
+    <script src="assets/authors.js"></script>
+</body>
+
+<footer>
+    <p>&copy; 2025 PedBook</p>
+</footer>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>PedBook - Livros</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+</head>
+
+<body>
+    <header>
+        <h1>Livros</h1>
+    </header>
+
+    <nav>
+        <a href="books.html" class="active">Livros</a>
+        <a href="authors.html">Autores</a>
+    </nav>
+
+    <main>
+        <section class="form-section">
+            <h2>Adicionar Livro</h2>
+            <form id="book-form">
+                <label for="author-select">Autor:</label>
+                <select name="author_id" id="author-select" required>
+                    <option value="">Selecione um Autor</option>
+                </select>
+                <label for="book-title">Título:</label>
+                <input type="text" name="title" id="book-title" required />
+                <button type="submit">Adicionar</button>
+            </form>
+        </section>
+
+        <section class="search-section">
+            <h2>Buscar Livros</h2>
+            <form id="search-form">
+                <input type="text" name="search_query" id="search-input" placeholder="Buscar por título" />
+                <button type="submit">Buscar</button>
+            </form>
+        </section>
+
+        <div id="no-results-message" class="no-results">
+            Nenhum resultado encontrado para sua busca.
+        </div>
+
+        <section class="book-list">
+            <h2>Livros</h2>
+            <table id="books-table" border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>ID do Autor</th>
+                        <th>Nome do Autor</th>
+                        <th>Título</th>
+                        <th>Alugado</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <div class="pagination" id="pagination"></div>
+        </section>
+    </main>
+
+    <script src="assets/config.js"></script>
+    <script src="assets/ui.js"></script>
+    <script src="assets/books.js"></script>
+</body>
+
+<footer>
+    <p>&copy; 2025 PedBook</p>
+</footer>
+
+</html>

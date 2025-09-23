@@ -1,0 +1,20 @@
+# Ignore VCS
+.git
+
+# Ignore environment files
+.env
+
+# Ignore MySQL data dir (can have special files with restricted perms)
+data/mysql
+data/mysql/*
+
+# Node/build artifacts if any
+node_modules
+npm-debug.log
+yarn.lock
+build
+dist
+
+# OS files
+.DS_Store
+Thumbs.db
