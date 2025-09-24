@@ -1,11 +1,9 @@
 <?php
 declare(strict_types=1);
-
 $env = parse_ini_file(__DIR__ . '/../../.env');
 if (!$env) {
     die("Error loading .env file");
 }
-
 function connect(): PDO
 {
     global $env;

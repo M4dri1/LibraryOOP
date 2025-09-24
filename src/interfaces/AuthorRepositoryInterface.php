@@ -1,6 +1,5 @@
 <?php
 declare(strict_types=1);
-
 interface AuthorRepositoryInterface
 {
     public function create(array $data): bool;

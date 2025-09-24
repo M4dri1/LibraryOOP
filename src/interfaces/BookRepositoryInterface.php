@@ -1,6 +1,5 @@
 <?php
 declare(strict_types=1);
-
 interface BookRepositoryInterface
 {
     public function create(array $data): bool;

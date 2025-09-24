@@ -1,19 +1,14 @@
 <?php
 declare(strict_types=1);
-
 require_once __DIR__ . '/../interfaces/BookRepositoryInterface.php';
 require_once __DIR__ . '/../config/connection.php';
-
-
 class BookRepository implements BookRepositoryInterface
 {
     private PDO $pdo;
-
     public function __construct()
     {
         $this->pdo = connect();
     }
-
     public function create(array $data): bool
     {
         try {
@@ -26,8 +21,6 @@ class BookRepository implements BookRepositoryInterface
             return false;
         }
     }
-
-    
     public function findAll(): array
     {
         try {
@@ -47,8 +40,6 @@ class BookRepository implements BookRepositoryInterface
             return [];
         }
     }
-
-    
     public function findWithPagination(int $limit, int $offset, string $search = ''): array
     {
         try {
@@ -77,19 +68,15 @@ class BookRepository implements BookRepositoryInterface
                                              ORDER BY b.book_id ASC 
                                              LIMIT :limit OFFSET :offset");
             }
-
             $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
             $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
             $stmt->execute();
-
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             error_log("BookRepository::findWithPagination - " . $e->getMessage());
             return [];
         }
     }
-
-    
     public function findById(int $id): ?array
     {
         try {
@@ -104,7 +91,6 @@ class BookRepository implements BookRepositoryInterface
                                          WHERE b.book_id = :id");
             $stmt->bindValue(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
-
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             return $result ?: null;
         } catch (PDOException $e) {
@@ -112,14 +98,12 @@ class BookRepository implements BookRepositoryInterface
             return null;
         }
     }
-
     public function update(int $id, array $data): bool
     {
         try {
             if (!$this->findById($id)) {
                 return false;
             }
-
             $stmt = $this->pdo->prepare("UPDATE books SET author_id = :author_id, title = :title WHERE book_id = :book_id");
             return $stmt->execute([
                 ':author_id' => $data['author_id'],
@@ -131,8 +115,6 @@ class BookRepository implements BookRepositoryInterface
             return false;
         }
     }
-
-    
     public function delete(int $id): bool
     {
         try {
@@ -150,8 +132,6 @@ class BookRepository implements BookRepositoryInterface
             return false;
         }
     }
-
-    
     public function count(string $search = ''): int
     {
         try {
@@ -161,7 +141,6 @@ class BookRepository implements BookRepositoryInterface
             } else {
                 $stmt = $this->pdo->prepare("SELECT COUNT(*) as total FROM books");
             }
-            
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             return (int) ($result['total'] ?? 0);
@@ -170,8 +149,6 @@ class BookRepository implements BookRepositoryInterface
             return 0;
         }
     }
-
-    
     public function isRented(int $id): bool
     {
         try {
@@ -185,8 +162,6 @@ class BookRepository implements BookRepositoryInterface
             return false;
         }
     }
-
-    
     public function setRented(int $id, bool $rented): bool
     {
         try {
@@ -207,4 +182,3 @@ class BookRepository implements BookRepositoryInterface
         }
     }
 }
-
