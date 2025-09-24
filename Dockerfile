@@ -14,7 +14,7 @@ RUN echo 'Alias /api /var/www/html/public/api\n\
     </Directory>' > /etc/apache2/conf-available/api-alias.conf \
     && a2enconf api-alias
 
-# Define books.html como página inicial (DirectoryIndex)
+    
 RUN echo 'DirectoryIndex books.html' > /etc/apache2/conf-available/front-index.conf \
     && a2enconf front-index
 
